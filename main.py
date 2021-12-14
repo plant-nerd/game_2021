@@ -1,40 +1,52 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-# Simple pygame program
-
-# Import and initialize the pygame library
 import pygame
 pygame.init()
+dis=pygame.display.set_mode((800,600))
+pygame.display.update()
+pygame.display.set_caption('Science Adventure Zone')
 
-# Press the green button in the gutter to run the script.
-#if __name__ == '__main__':
+yellow = (255, 255, 0)
+pink = (255, 0 , 255)
+red = (255, 0, 0)
+blue = (0, 0, 255)
+cyan = (0, 255, 255)
+black = (0, 0, 0)
+white = (255, 255, 255)
+green = (0, 255, 0)
 
-# Set up the drawing window
-screen = pygame.display.set_mode([500, 500])
-# dude
-# Run until the user asks to quit
-running = True
-while running:
+game_over=False
 
-    # Did the user click the window close button?
+x1 = 300
+y1 = 300
+
+x1_change = 0
+y1_change = 0
+
+clock = pygame.time.Clock()
+
+while not game_over:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            running = False
+            game_over = True
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                x1_change = -10
+                y1_change = 0
+            elif event.key == pygame.K_RIGHT:
+                x1_change = 10
+                y1_change = 0
+            elif event.key == pygame.K_UP:
+                y1_change = -10
+                x1_change = 0
+            elif event.key == pygame.K_DOWN:
+                y1_change = 10
+                x1_change = 0
 
-    # Fill the background with white
-    screen.fill((0, 0, 0))
+    x1 += x1_change
+    y1 += y1_change
+    pygame.draw.circle(dis,pink,(x1, y1), 50)
+    pygame.display.update()
 
-    # Draw a solid blue circle in the center
-    pygame.draw.circle(screen, (0, 0, 255), (250, 250), 75)
+    clock.tick(30)
 
-    # Flip the display
-    pygame.display.flip()
-
-# Done! Time to quit.
 pygame.quit()
-
-
-print("Welcome to the Adventure Zone! I don't think I can call this that!")
+quit()
