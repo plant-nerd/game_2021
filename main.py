@@ -1,11 +1,11 @@
 import pygame
 pygame.init()
-dis=pygame.display.set_mode((800,600))
+dis = pygame.display.set_mode((800, 600))
 pygame.display.update()
-pygame.display.set_caption('Color Zone')
+pygame.display.set_caption('Color Zone!!!!! XD')
 
 yellow = (255, 255, 0)
-pink = (255, 0 , 255)
+pink = (255, 0, 255)
 red = (255, 0, 0)
 blue = (0, 0, 255)
 cyan = (0, 255, 255)
@@ -13,11 +13,12 @@ black = (0, 0, 0)
 white = (255, 255, 255)
 green = (0, 255, 0)
 orange = (255, 140, 0)
-purple = (150, 0 , 255)
+purple = (150, 0, 255)
+transparent = (100, 100, 100, 0.2)
 
-game_over=False
+game_over = False
 
-x1 = 300
+x1 = 400
 y1 = 300
 
 x1_change = 0
@@ -62,6 +63,8 @@ while not game_over:
                 color = orange
             elif event.key == pygame.K_u:
                 color = purple
+            elif event.key == pygame.K_t:
+                color = transparent
             ###elif event.key == pygame.K_1:
                 #rainbow = True
                 #count = 0
@@ -98,7 +101,7 @@ while not game_over:
             y1_change = 0
     x1 += x1_change
     y1 += y1_change
-    pygame.draw.circle(dis,color,(x1, y1), 50)
+    pygame.draw.circle(dis, color, (x1, y1), 50)
     pygame.display.update()
 
     clock.tick(30)
